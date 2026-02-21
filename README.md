@@ -386,5 +386,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ---
 
 **Version**: 1.0  
-**Last Updated**: December 2024  
-**Maintainer**: Healthcare AI Safety Team
+**Last Updated**: Jan 2026
+**Maintainer**: Ishwari Wakchaure
