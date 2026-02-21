@@ -1,0 +1,145 @@
+# Healthcare LLM Guardrails - Python Dependencies
+# ================================================
+# This file contains all required Python packages for the healthcare
+# conversational AI system using NVIDIA NeMo Guardrails
+
+# Core NeMo Guardrails Framework
+# ------------------------------
+nemoguardrails>=0.8.0          # Main guardrails framework
+
+# OpenAI Integration
+# ------------------
+openai>=1.3.0                  # OpenAI API client for GPT models
+tiktoken>=0.5.1                # Token counting for OpenAI models
+
+# Alternative LLM Backends (Optional)
+# ------------------------------------
+# anthropic>=0.7.0             # Anthropic Claude models
+# cohere>=4.37                 # Cohere models
+# huggingface-hub>=0.19.0      # Hugging Face model integration
+
+# Core Dependencies
+# -----------------
+pydantic>=2.0.0                # Data validation and settings management
+pyyaml>=6.0                    # YAML configuration file parsing
+jinja2>=3.1.0                  # Template engine for response generation
+aiohttp>=3.8.0                 # Async HTTP client for API calls
+asyncio-throttle>=1.0.2        # Rate limiting for API calls
+
+# Natural Language Processing
+# ---------------------------
+nltk>=3.8                      # Natural language processing toolkit
+spacy>=3.6.0                   # Advanced NLP library
+textblob>=0.17.0               # Simple text processing and sentiment analysis
+transformers>=4.35.0           # Transformer models for text processing
+sentence-transformers>=2.2.0   # Sentence embeddings for semantic analysis
+
+# Text Processing and Analysis
+# ----------------------------
+regex>=2023.10.0               # Advanced regular expressions
+textstat>=0.7.3                # Text readability and complexity analysis
+langdetect>=1.0.9              # Language detection for input validation
+
+# Security and Privacy
+# --------------------
+cryptography>=41.0.0           # Encryption and security utilities
+hashlib-compat>=1.0.1          # Secure hashing functions
+python-dotenv>=1.0.0           # Environment variable management
+
+# Data Handling and Storage
+# -------------------------
+pandas>=2.1.0                  # Data manipulation and analysis
+numpy>=1.24.0                  # Numerical computing
+jsonschema>=4.19.0             # JSON schema validation
+
+# Logging and Monitoring
+# ----------------------
+structlog>=23.2.0              # Structured logging
+prometheus-client>=0.19.0      # Metrics collection for monitoring
+psutil>=5.9.0                  # System and process monitoring
+
+# Web Framework (Optional - for API deployment)
+# ----------------------------------------------
+fastapi>=0.104.0               # Modern web framework for APIs
+uvicorn>=0.24.0                # ASGI server for FastAPI
+starlette>=0.27.0              # Lightweight ASGI framework
+
+# Testing and Development
+# -----------------------
+pytest>=7.4.0                 # Testing framework
+pytest-asyncio>=0.21.0        # Async testing support
+pytest-cov>=4.1.0             # Test coverage reporting
+black>=23.10.0                 # Code formatting
+flake8>=6.1.0                  # Code linting
+mypy>=1.7.0                    # Static type checking
+
+# Healthcare-Specific Libraries
+# -----------------------------
+# medspacy>=1.0.0              # Medical text processing (optional)
+# scispacy>=0.5.3              # Scientific/medical NLP models (optional)
+
+# Performance and Optimization
+# ----------------------------
+cachetools>=5.3.0              # Caching utilities
+memory-profiler>=0.61.0        # Memory usage profiling
+line-profiler>=4.1.0           # Line-by-line performance profiling
+
+# Configuration and Environment
+# -----------------------------
+click>=8.1.0                   # Command-line interface creation
+rich>=13.6.0                   # Rich text and beautiful formatting
+tqdm>=4.66.0                   # Progress bars for long operations
+
+# Date and Time Handling
+# ----------------------
+python-dateutil>=2.8.0         # Extended date/time handling
+pytz>=2023.3                   # Timezone handling
+
+# HTTP and API Utilities
+# ----------------------
+requests>=2.31.0               # HTTP library for API calls
+urllib3>=2.0.0                 # HTTP client library
+certifi>=2023.7.0              # SSL certificate bundle
+
+# Development Tools (Optional)
+# -----------------------------
+# jupyter>=1.0.0               # Jupyter notebook for development
+# ipython>=8.17.0              # Enhanced Python shell
+# notebook>=7.0.0              # Jupyter notebook server
+
+# Production Deployment (Optional)
+# ---------------------------------
+# gunicorn>=21.2.0             # WSGI HTTP Server for production
+# redis>=5.0.0                 # Redis client for caching/sessions
+# celery>=5.3.0                # Distributed task queue
+
+# Compatibility and Utilities
+# ----------------------------
+typing-extensions>=4.8.0       # Extended typing support
+packaging>=23.2                # Package version handling
+setuptools>=68.0.0             # Package installation utilities
+
+# Note: Version Compatibility
+# ===========================
+# - Python 3.8+ required for NeMo Guardrails
+# - Some packages may have conflicting dependencies
+# - Use virtual environment for isolation
+# - Pin versions for production deployment
+
+# Installation Instructions:
+# =========================
+# 1. Create virtual environment: python -m venv healthcare-ai-env
+# 2. Activate environment: 
+#    - Windows: healthcare-ai-env\Scripts\activate
+#    - Linux/Mac: source healthcare-ai-env/bin/activate
+# 3. Install dependencies: pip install -r requirements.txt
+# 4. Set environment variables (see README.md)
+
+# Optional GPU Support (for local model inference):
+# =================================================
+# torch>=2.1.0                 # PyTorch for GPU acceleration
+# torchvision>=0.16.0          # Computer vision models
+# torchaudio>=2.1.0            # Audio processing models
+# 
+# For CUDA support, install from:
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118

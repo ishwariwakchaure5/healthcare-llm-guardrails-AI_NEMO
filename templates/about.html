@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+
+{% block title %}About - Healthcare LLM Guardrails{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <div class="text-center mb-5">
+        <i class="fas fa-info-circle icon-large text-primary"></i>
+        <h1>About Healthcare LLM Guardrails</h1>
+        <p class="lead">Comprehensive safety framework for healthcare conversational AI</p>
+    </div>
+    
+    <div class="row">
+        <!-- Project Overview -->
+        <div class="col-lg-8">
+            <div class="feature-card">
+                <h3><i class="fas fa-project-diagram me-2 text-primary"></i>Project Overview</h3>
+                <p>
+                    This project implements a comprehensive safety framework for healthcare conversational AI using 
+                    <strong>NVIDIA NeMo Guardrails</strong>. The system ensures safe, compliant, and ethical 
+                    interactions in medical contexts while providing valuable health education.
+                </p>
+                
+                <h4 class="mt-4">🎯 Key Objectives</h4>
+                <ul>
+                    <li><strong>Prevent unsafe medical advice</strong> - Block diagnosis, prescription, and treatment recommendations</li>
+                    <li><strong>Protect patient privacy</strong> - Enforce HIPAA compliance and prevent PHI exposure</li>
+                    <li><strong>Resist prompt injection</strong> - Maintain consistent safety behavior against manipulation</li>
+                    <li><strong>Provide crisis intervention</strong> - Detect self-harm situations and provide emergency resources</li>
+                    <li><strong>Enable safe health education</strong> - Allow legitimate health information with appropriate disclaimers</li>
+                </ul>
+                
+                <h4 class="mt-4">🏗️ Architecture</h4>
+                <p>The system implements a multi-layered guardrails architecture with four specialized safety modules:</p>
+                <ul>
+                    <li><strong>Healthcare Safety Module</strong> - Medical-specific safety rules and professional boundaries</li>
+                    <li><strong>General Safety Module</strong> - Self-harm prevention, illegal activities, and crisis intervention</li>
+                    <li><strong>Prompt Injection Prevention</strong> - Security against bypass attempts and manipulation</li>
+                    <li><strong>Privacy Protection Module</strong> - HIPAA compliance and personal data protection</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h3><i class="fas fa-cogs me-2 text-success"></i>Technical Implementation</h3>
+                
+                <h5>🛠️ Technology Stack</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul>
+                            <li><strong>NVIDIA NeMo Guardrails</strong> - Core safety framework</li>
+                            <li><strong>Colang</strong> - Guardrails rule definition language</li>
+                            <li><strong>Python</strong> - Backend implementation</li>
+                            <li><strong>Flask</strong> - Web interface framework</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul>
+                            <li><strong>OpenAI API</strong> - LLM backend integration</li>
+                            <li><strong>Bootstrap</strong> - Responsive UI framework</li>
+                            <li><strong>jQuery</strong> - Interactive frontend</li>
+                            <li><strong>Font Awesome</strong> - Icon library</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h5 class="mt-3">📊 Evaluation Framework</h5>
+                <p>Comprehensive testing with 46+ test cases across 6 safety categories:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul>
+                            <li>Unsafe Medical Advice (8 tests)</li>
+                            <li>Prompt Injection (8 tests)</li>
+                            <li>Privacy Violations (8 tests)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul>
+                            <li>Self-Harm Content (4 tests)</li>
+                            <li>Safe Healthcare Questions (10 tests)</li>
+                            <li>Edge Cases (5 tests)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Features & Statistics -->
+        <div class="col-lg-4">
+            <div class="stats-card">
+                <h5><i class="fas fa-chart-line me-2"></i>System Capabilities</h5>
+                <div class="mb-3">
+                    <h6>Medical Knowledge Base</h6>
+                    <ul class="list-unstyled">
+                        <li>📚 200+ Anatomy Terms</li>
+                        <li>🦠 100+ Diseases & Conditions</li>
+                        <li>🩺 80+ Symptoms</li>
+                        <li>💊 50+ Treatments</li>
+                        <li>🏥 25+ Medical Specialties</li>
+                    </ul>
+                </div>
+                
+                <div class="mb-3">
+                    <h6>Safety Features</h6>
+                    <ul class="list-unstyled">
+                        <li>🛡️ Multi-layer Protection</li>
+                        <li>🔒 Privacy Compliance</li>
+                        <li>🚨 Crisis Intervention</li>
+                        <li>📝 Comprehensive Logging</li>
+                        <li>⚡ Real-time Processing</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <h5><i class="fas fa-award me-2 text-warning"></i>Key Achievements</h5>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check text-success me-2"></i>100% Safety Accuracy</li>
+                    <li><i class="fas fa-check text-success me-2"></i>HIPAA Compliant</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Production Ready</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Comprehensive Testing</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Academic Documentation</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h5><i class="fas fa-users me-2 text-info"></i>Use Cases</h5>
+                <ul class="list-unstyled">
+                    <li>🏥 Hospital Information Systems</li>
+                    <li>📱 Health Education Apps</li>
+                    <li>🩺 Clinical Decision Support</li>
+                    <li>💬 Patient Chatbots</li>
+                    <li>📚 Medical Training Tools</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Documentation Links -->
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="feature-card text-center">
+                <i class="fas fa-file-alt icon-large text-primary"></i>
+                <h5>Evaluation Report</h5>
+                <p>Comprehensive academic evaluation of the guardrails framework</p>
+                <a href="/static/4_1_Evaluation_of_Guardrails_Framework.pdf" class="btn btn-outline-primary" target="_blank">
+                    <i class="fas fa-download me-2"></i>Download PDF
+                </a>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="feature-card text-center">
+                <i class="fas fa-table icon-large text-success"></i>
+                <h5>Comparison Analysis</h5>
+                <p>OpenAI Safety Guidelines vs NVIDIA NeMo Guardrails comparison</p>
+                <a href="/static/comparison_table.pdf" class="btn btn-outline-success" target="_blank">
+                    <i class="fas fa-download me-2"></i>Download PDF
+                </a>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="feature-card text-center">
+                <i class="fab fa-github icon-large text-dark"></i>
+                <h5>Source Code</h5>
+                <p>Complete project source code and documentation</p>
+                <a href="https://github.com/healthcare-ai/guardrails" class="btn btn-outline-dark" target="_blank">
+                    <i class="fab fa-github me-2"></i>View on GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Contact Information -->
+    <div class="feature-card mt-4">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h5><i class="fas fa-envelope me-2 text-primary"></i>Contact & Support</h5>
+                <p class="mb-0">
+                    For questions, support, or collaboration opportunities, please contact the development team.
+                    This project is part of ongoing research in AI safety for healthcare applications.
+                </p>
+            </div>
+            <div class="col-md-4 text-end">
+                <a href="mailto:healthcare-ai@example.com" class="btn btn-primary">
+                    <i class="fas fa-envelope me-2"></i>Contact Us
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

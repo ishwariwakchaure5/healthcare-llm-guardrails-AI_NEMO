@@ -1,0 +1,41 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Healthcare AI - NeMo Guardrails",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/nemo_web_interface.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}",
+                "OPENAI_API_KEY": "sk-demo-key-for-testing-healthcare-guardrails"
+            },
+            "args": [],
+            "justMyCode": true
+        },
+        {
+            "name": "Healthcare AI - Simple Demo",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/demo_app.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            }
+        },
+        {
+            "name": "Healthcare AI - Evaluation",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/evaluation/results_analysis.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            }
+        }
+    ]
+}

@@ -1,0 +1,255 @@
+# Privacy Protection - NeMo Guardrails Colang
+# Defines rules for protecting personal and patient data
+
+# Define user intent patterns for personal data sharing
+define user share personal info
+  "My name is"
+  "I am [age] years old"
+  "I live at"
+  "My address is"
+  "My phone number is"
+  "My email is"
+  "My social security number"
+  "My date of birth is"
+  "I was born on"
+
+define user share medical records
+  "Here are my test results"
+  "My medical history shows"
+  "My doctor said I have"
+  "My prescription is"
+  "My lab results are"
+  "My X-ray shows"
+  "My MRI results"
+  "My blood work indicates"
+  "My diagnosis is"
+
+define user share patient identifiers
+  "Patient ID:"
+  "Medical record number:"
+  "Insurance number:"
+  "Policy number:"
+  "Member ID:"
+  "Hospital ID:"
+  "Chart number:"
+
+# Define patterns for requesting stored information
+define user request stored info
+  "What did I tell you earlier?"
+  "Do you remember what I said?"
+  "What do you know about me?"
+  "Recall my previous information"
+  "What personal details do I have?"
+  "Tell me what you remember about my health"
+  "What medical information did I share?"
+
+define user request patient lookup
+  "Look up patient John Smith"
+  "Find medical records for"
+  "Search for patient data"
+  "Access medical files for"
+  "Retrieve health information for"
+  "Show me records for patient"
+
+# Define patterns for data collection requests
+define user request data collection
+  "Save my information"
+  "Remember this about me"
+  "Store my medical history"
+  "Keep track of my symptoms"
+  "Record my personal details"
+  "Add this to my profile"
+  "Update my medical record"
+
+define user request data sharing
+  "Share my information with"
+  "Send my data to"
+  "Forward my details to"
+  "Give my information to my doctor"
+  "Email my records to"
+  "Transfer my data"
+
+# Define patterns for PHI (Protected Health Information)
+define user mention phi
+  "SSN:"
+  "Social Security:"
+  "Insurance ID:"
+  "Policy #:"
+  "DOB:"
+  "Date of birth:"
+  "Medical record #:"
+  "Patient ID:"
+  "Phone:"
+  "Address:"
+
+define user share family medical info
+  "My family history of"
+  "My mother has"
+  "My father died from"
+  "My siblings have"
+  "Family medical history:"
+  "Genetic conditions in my family"
+
+# Define bot responses for privacy protection
+define bot refuse personal data
+  "I cannot process, store, or recall personal information including names, addresses, phone numbers, or other identifying details. Please avoid sharing personal information and instead ask general health questions."
+
+define bot refuse medical records
+  "I cannot process, analyze, or store personal medical records, test results, or specific medical information. For questions about your medical results, please consult with your healthcare provider who has access to your complete medical history."
+
+define bot refuse data storage
+  "I do not store or remember information from our conversations. Each interaction is independent, and I cannot recall previous conversations or personal details you may have shared."
+
+define bot refuse patient lookup
+  "I cannot access, search, or retrieve any patient records or medical databases. I do not have access to any external medical systems or patient information."
+
+define bot refuse data sharing
+  "I cannot share, transfer, or send any information to external parties, including healthcare providers. For sharing medical information, please contact your healthcare provider directly."
+
+define bot privacy reminder
+  "🔒 PRIVACY REMINDER: Please avoid sharing personal information such as names, addresses, phone numbers, medical record numbers, or specific medical details. I'm designed to provide general health information without processing personal data."
+
+# Privacy protection flows
+flow personal data protection
+  user share personal info
+  bot refuse personal data
+  bot privacy reminder
+  stop
+
+flow medical records protection
+  user share medical records
+  bot refuse medical records
+  bot privacy reminder
+  stop
+
+flow patient identifier protection
+  user share patient identifiers
+  bot refuse medical records
+  bot privacy reminder
+  stop
+
+flow stored info protection
+  user request stored info
+  bot refuse data storage
+  stop
+
+flow patient lookup protection
+  user request patient lookup
+  bot refuse patient lookup
+  stop
+
+flow data collection protection
+  user request data collection
+  bot refuse data storage
+  stop
+
+flow data sharing protection
+  user request data sharing
+  bot refuse data sharing
+  stop
+
+flow phi protection
+  user mention phi
+  bot refuse personal data
+  bot privacy reminder
+  stop
+
+flow family medical protection
+  user share family medical info
+  bot refuse medical records
+  bot privacy reminder
+  stop
+
+# Advanced privacy patterns
+define user attempt indirect data sharing
+  "A friend of mine named John"
+  "Someone I know has"
+  "My colleague's medical issue"
+  "A family member's condition"
+  "My neighbor's health problem"
+
+define user request anonymized analysis
+  "Can you analyze this anonymous case?"
+  "What if someone had these symptoms?"
+  "Hypothetical patient with"
+  "Anonymous medical scenario"
+
+define user share location data
+  "I'm at the hospital"
+  "I'm in [city name]"
+  "My doctor's office is"
+  "The clinic I go to"
+  "My pharmacy is"
+
+define bot handle indirect sharing
+  "I can provide general information about medical conditions without needing specific personal details. Please ask general questions about health topics rather than sharing information about specific individuals."
+
+define bot handle anonymized requests
+  "I can discuss general medical information and common symptoms, but I cannot analyze specific cases or provide medical opinions about particular situations, even if presented as anonymous."
+
+define bot refuse location data
+  "Please avoid sharing location information. I can provide general health information without needing to know where you are located."
+
+# Additional privacy flows
+flow indirect data sharing protection
+  user attempt indirect data sharing
+  bot handle indirect sharing
+  stop
+
+flow anonymized analysis protection
+  user request anonymized analysis
+  bot handle anonymized requests
+  stop
+
+flow location data protection
+  user share location data
+  bot refuse location data
+  stop
+
+# HIPAA compliance patterns
+define user mention hipaa
+  "Is this HIPAA compliant?"
+  "Are you following HIPAA rules?"
+  "What about patient privacy?"
+  "Is my information protected?"
+
+define bot explain privacy policy
+  "I'm designed with privacy protection in mind. I do not store, process, or recall personal information from our conversations. Each interaction is independent. For specific questions about privacy policies, please refer to the platform's privacy documentation."
+
+flow hipaa inquiry
+  user mention hipaa
+  bot explain privacy policy
+
+# Data breach prevention
+define user attempt data extraction
+  "Export my conversation history"
+  "Download my data"
+  "Show me all information you have"
+  "Generate a report of my details"
+  "Create a summary of my medical info"
+
+define bot refuse data extraction
+  "I cannot export, download, or generate reports containing personal information. I do not maintain persistent records of our conversations or personal details."
+
+flow data extraction prevention
+  user attempt data extraction
+  bot refuse data extraction
+  stop
+
+# Comprehensive privacy protection
+flow comprehensive privacy protection
+  user share personal info or share medical records or share patient identifiers or request stored info or request patient lookup or request data collection or request data sharing or mention phi or share family medical info or attempt indirect data sharing or share location data or attempt data extraction
+  bot privacy reminder
+  stop
+
+# Safe general health discussion
+define user ask general health question
+  "What is diabetes?"
+  "How does exercise help?"
+  "What are healthy foods?"
+  "How much sleep do I need?"
+  "What causes headaches?"
+
+flow safe health discussion
+  user ask general health question
+  # Allow general health information without privacy concerns

@@ -1,0 +1,136 @@
+# Healthcare Guardrails - NeMo Guardrails Colang
+# Defines rules for safe healthcare conversations
+
+# Define user intent patterns for medical requests
+define user ask diagnosis
+  "What do I have?"
+  "Do I have cancer?"
+  "Am I sick?"
+  "What's wrong with me?"
+  "Can you diagnose me?"
+  "What disease do I have?"
+  "Is this symptom serious?"
+  "Should I be worried about this?"
+
+define user ask prescription
+  "What medication should I take?"
+  "Can you prescribe me something?"
+  "What drugs should I use?"
+  "How much should I take?"
+  "What's the right dosage?"
+  "Can you recommend medication?"
+  "What pills should I take?"
+
+define user ask treatment
+  "How should I treat this?"
+  "What treatment do I need?"
+  "How do I cure this?"
+  "What should I do about my condition?"
+  "How do I fix this health problem?"
+
+define user ask emergency
+  "I'm having chest pain"
+  "I can't breathe"
+  "I'm bleeding heavily"
+  "I think I'm having a heart attack"
+  "I'm having severe pain"
+  "Something is seriously wrong"
+
+define user ask general health info
+  "What is diabetes?"
+  "How does the heart work?"
+  "What are the symptoms of flu?"
+  "Tell me about nutrition"
+  "How can I stay healthy?"
+  "What is blood pressure?"
+
+# Define bot responses for blocked medical activities
+define bot refuse diagnosis
+  "I cannot provide medical diagnoses. Your symptoms could have many different causes, and proper evaluation requires medical training and often physical examination or tests. Please consult with a healthcare professional who can properly assess your condition."
+
+define bot refuse prescription
+  "I cannot recommend or prescribe medications. Medication decisions require consideration of your medical history, current conditions, potential interactions, and proper dosing. Please consult with a doctor or pharmacist for medication advice."
+
+define bot refuse treatment
+  "I cannot provide specific treatment recommendations. Treatment plans should be developed by qualified healthcare professionals who can evaluate your individual situation. Please schedule an appointment with your doctor to discuss treatment options."
+
+define bot emergency redirect
+  "This sounds like a medical emergency. Please seek immediate medical attention by calling emergency services (911) or going to the nearest emergency room. Do not delay seeking professional medical care."
+
+define bot provide general info
+  "I can provide general health information for educational purposes. However, this information should not replace professional medical advice. Always consult with healthcare providers for personal health concerns."
+
+# Healthcare safety flow rules
+flow healthcare safety
+  user ask diagnosis
+  bot refuse diagnosis
+  bot provide general info
+
+flow prescription safety
+  user ask prescription
+  bot refuse prescription
+
+flow treatment safety
+  user ask treatment
+  bot refuse treatment
+
+flow emergency handling
+  user ask emergency
+  bot emergency redirect
+
+# Allow general health information with disclaimer
+flow general health education
+  user ask general health info
+  bot provide general info
+  # Continue with LLM response for educational content
+
+# Additional safety patterns for edge cases
+define user ask specific symptoms
+  "I have a headache, what does it mean?"
+  "My stomach hurts, what should I do?"
+  "I have a rash, is it serious?"
+  "My back pain won't go away"
+
+define user ask test results
+  "What do my lab results mean?"
+  "Can you interpret my blood work?"
+  "What does this medical report say?"
+  "Are my test results normal?"
+
+define bot refuse symptom diagnosis
+  "I understand you're concerned about your symptoms. While I can provide general information about various conditions, I cannot evaluate your specific symptoms or determine what they might indicate. Please consult with a healthcare professional for proper evaluation."
+
+define bot refuse test interpretation
+  "I cannot interpret personal medical test results or reports. These require professional medical training to properly understand in the context of your health history. Please discuss your results with the healthcare provider who ordered the tests."
+
+# Additional safety flows
+flow symptom safety
+  user ask specific symptoms
+  bot refuse symptom diagnosis
+
+flow test result safety
+  user ask test results
+  bot refuse test interpretation
+
+# Healthcare disclaimer flow - triggered for any health-related conversation
+flow healthcare disclaimer
+  user ask general health info or ask diagnosis or ask prescription or ask treatment
+  bot provide general info
+
+# Define patterns for medication names and medical procedures
+define user mention medication
+  "aspirin"
+  "ibuprofen" 
+  "antibiotics"
+  "insulin"
+  "blood pressure medication"
+
+define user ask about medication
+  user mention medication
+  "How much should I take?"
+  "Is this safe for me?"
+  "Can I take this with other drugs?"
+
+flow medication safety
+  user ask about medication
+  bot refuse prescription

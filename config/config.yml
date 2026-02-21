@@ -1,0 +1,128 @@
+# NVIDIA NeMo Guardrails Configuration for Healthcare Conversational AI
+# This configuration sets up safety guardrails for medical AI interactions
+
+# Model Configuration - OpenAI-compatible LLM backend
+models:
+  - type: main
+    engine: openai
+    model: gpt-4
+    parameters:
+      temperature: 0.1  # Low temperature for consistent, reliable responses
+      max_tokens: 1000
+      top_p: 0.9
+
+# Core Guardrails Configuration
+core:
+  # Enable safety mechanisms
+  safety:
+    enabled: true
+    
+  # Input validation and sanitization
+  input_rails:
+    - healthcare_input_validation
+    - privacy_protection
+    - injection_prevention
+    
+  # Output filtering and safety checks
+  output_rails:
+    - healthcare_disclaimers
+    - safety_filtering
+    - medical_advice_prevention
+
+# Healthcare-specific Safety Settings
+healthcare:
+  # Medical disclaimer configuration
+  disclaimers:
+    enabled: true
+    message: |
+      ⚠️ IMPORTANT MEDICAL DISCLAIMER:
+      This AI assistant provides general health information only and is not a substitute 
+      for professional medical advice, diagnosis, or treatment. Always consult with 
+      qualified healthcare providers for medical concerns. In case of emergency, 
+      contact emergency services immediately.
+    
+  # Prohibited medical activities
+  restrictions:
+    - no_diagnosis
+    - no_prescription
+    - no_treatment_recommendations
+    - no_emergency_advice
+
+# Conversation Flow Settings
+rails:
+  # Define conversation boundaries
+  config:
+    # Maximum conversation length to prevent context drift
+    max_turns: 20
+    
+    # Enable conversation logging for safety monitoring
+    logging:
+      enabled: true
+      level: INFO
+      
+    # Fallback responses for blocked content
+    fallback_responses:
+      unsafe_content: "I cannot provide that type of medical information. Please consult with a healthcare professional."
+      privacy_violation: "I cannot process requests that may contain personal health information."
+      injection_attempt: "I detected an attempt to modify my behavior. Please rephrase your question."
+
+# Content Filtering Configuration
+content_filters:
+  # Personal Health Information (PHI) detection
+  phi_detection:
+    enabled: true
+    sensitivity: high
+    
+  # Harmful content prevention
+  harm_prevention:
+    enabled: true
+    categories:
+      - self_harm
+      - dangerous_medical_advice
+      - unverified_treatments
+      
+  # Prompt injection protection
+  injection_protection:
+    enabled: true
+    detection_methods:
+      - pattern_matching
+      - semantic_analysis
+
+# Logging and Monitoring
+logging:
+  # Enable comprehensive logging for safety auditing
+  enabled: true
+  level: INFO
+  
+  # Log safety events for review
+  safety_events:
+    enabled: true
+    include_blocked_content: false  # Don't log actual blocked content for privacy
+    
+  # Performance monitoring
+  performance:
+    enabled: true
+    track_response_times: true
+
+# Custom Actions for Healthcare Context
+actions:
+  # Healthcare disclaimer injection
+  - name: add_healthcare_disclaimer
+    type: system
+    enabled: true
+    
+  # Emergency redirect action
+  - name: emergency_redirect
+    type: system
+    enabled: true
+    message: "For medical emergencies, please contact emergency services (911) immediately."
+
+# Development and Testing Settings
+development:
+  # Enable debug mode for testing (disable in production)
+  debug: false
+  
+  # Test mode settings
+  test_mode:
+    enabled: false
+    bypass_safety: false  # Never bypass safety even in test mode
