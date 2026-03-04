@@ -270,26 +270,3 @@ In case of emergency, call emergency services immediately.
 Ishwari Wakchaure  
 Healthcare AI Safety Engineering Project  
 
----
-
-## 📜 License
-
-MIT License
-
----
-
-## 🌟 Future Improvements
-
-- Add local LLM backend (Llama / Mistral)
-- Add RAG medical knowledge base
-- Add vector database integration
-- Add user session tracking
-- Add production deployment with Docker
-
----
-
-## 🏁 Conclusion
-
-Healthcare LLM Guardrails demonstrates how to safely deploy large language models in high-risk domains like healthcare using structured guardrails, semantic analysis, and strict safety enforcement.
-
-This project emphasizes responsible AI design and safe AI deployment.
